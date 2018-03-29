@@ -237,7 +237,7 @@
         src/doc/nodeBackUp/node4/application.properties
 
     3>.说明:
-       由于测试springCloud需要多个节点. 把本项目作为第一节点,peer1,即注册中心.
+       由于测试springCloud需要多个节点. 把本项目作为第一节点,peer1,即服务注册中心.
             其他节点项目的主要配置文件已备份至/doc/nodeBackUp/中了,除了这些文件外,所有节点的其他文件基本相同.
 
     4>.搭建:注册中心单点,成功.
@@ -254,11 +254,20 @@
         注册中心: 本工程.
         服务提供者: springBoot-node3-serviceProvider工程. 配置文件已备份到/doc/nodeBackUp中.
         服务消费者: springBoot-node4-serviceConsumer工程. 注意新的概念: "feign"接口!
+        测试url:localhost:8084/testCallRemoteService.do?name=jsflzhong
 
-    7>.搭建: 注册中心对服务提供者多个点的负载均衡, 成功.
+    7>.搭建:注册中心对服务提供者多个点的负载均衡, 成功.
         这个功能应该是eureka自己实现的,猜测:我们只要保证第二个点的配置文件中的spring.application.name=的值,与第一个点一致,
         那么eureka注册中心就会把他俩视为同一个服务提供者,就会提供负载均衡服务.
         工程: springBoot-node3-serviceProvider-node2
+        测试url: 反复刷新: localhost:8084/testCallRemoteService.do?name=jsflzhong
+
+    8>.搭建:hystrix熔断器,成功.
+        Feign Hystrix : 在服务提供者提供的服务不可用时,消费者会通过调用自己的实现类中的重写方法,来通知服务消费者指定的错误信息.
+        工程: springBoot-node5-serviceConsumer2-hystrix
+        测试url: http://localhost:8085/testCallRemoteService.do?name=jsflzhong
+        在服务提供者启动并注册后,访问上述消费者的url来请求数据; 然后关闭该服务提供者,再次访问上述url,此时hystrix熔断器发挥回调作用.可看到自定义的熔断器返回的错误信息.
+
 
 
 

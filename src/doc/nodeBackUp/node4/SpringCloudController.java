@@ -1,6 +1,6 @@
 package com.michael.springBoot.controller;
 
-import com.michael.springBoot.service.TestFeign;
+import com.michael.springBoot.springCloud.TestFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

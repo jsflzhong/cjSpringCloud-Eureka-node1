@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 2018/3/28
  * @author cj
  */
-@FeignClient(name="spring-cloud-producer") //1.需指向服务提供者的配置中的spring.application.name=的值.
+//1.需指向服务提供者的配置中的spring.application.name=的值.
+@FeignClient(name="spring-cloud-producer",fallback = TestHystrix.class) //5.需要指定hystrix阻断回调的实现类.
 public interface TestFeign { //2.Controller中需要DI这个接口!
 
     @RequestMapping(value = "/testHello") //3.这个要与服务提供者的目标handler的url一致!!
