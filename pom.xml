@@ -53,16 +53,12 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-		<!-- jsp -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>jstl</artifactId>
-		</dependency>
 		<!--用于编译jsp-->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
-			<scope>provided</scope>
+			<!--使用内部tomcat容器时需要注释掉. 是idea的BUG,因为provided的依赖都是不会被加入到 classpath 中-->
+			<!--<scope>provided</scope>-->
 		</dependency>
 
 		<!--持久层相关-->

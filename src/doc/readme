@@ -278,7 +278,9 @@
 5.待解决BUG:
 
     1>.通过Application.java方式启动的项目,很快,但无法通过controller访问jsp页面.
-        --未解决.
+        --已解决: 20180330
+        由于IDEA的BUG,需要注掉tomcat-embed-jasper依赖的provided作用域.
+        且,这种启动方式比下面maven的好处多很多,例如,LOG完善,断点支持.
 
     2>.通过maven命令行启动的项目,启动很慢,可以通过controller访问jsp页面,但无法点击停止按钮来真正停止JVM并释放端口.
         --已解决: 见笔记: 36.亲测maven+debug功能
