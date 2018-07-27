@@ -1,5 +1,9 @@
 package com.michael.springBoot.filters;
 
+
+import org.apache.log4j.spi.LoggerFactory;
+import org.slf4j.Logger;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -12,9 +16,11 @@ import java.io.IOException;
  */
 public class TestFilter implements Filter {
 
+    private static final Logger logger = org.slf4j.LoggerFactory.getLogger(TestFilter.class);
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        //Do nothing because it is useless right now.
     }
 
     @Override
@@ -24,12 +30,12 @@ public class TestFilter implements Filter {
         //i can writer other business code right here...
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
-        System.out.println("TestFilter is runnning=====================,request url is : "+request.getRequestURI());
+        logger.info("@@@TestFilter is runnning==========,request url is : {}",request.getRequestURI());
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
-
+        //Do nothing because it is useless right now.
     }
 }

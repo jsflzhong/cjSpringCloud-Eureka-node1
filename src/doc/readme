@@ -108,7 +108,7 @@
     8>.整合mybatis代码生成器:
         依赖见pom.xml中的pluggin部分.(里面手动指定了该插件的配置文件的位置.即下行的内容.)
         配置见generator/generatorConfig.xml.
-        执行方式: 双击: maven--Plugins--mybatis-generator-mybatis-generator:genrate
+        执行方式: 双击: maven--Plugins--mybatis-generator-mybatis-generator:generate
         已通过测试. TSBaseUser的pojo,dao,mapper xml就是自动生成的.
 
     9>.事务管理:
@@ -242,18 +242,22 @@
 
     4>.搭建:注册中心单点,成功.
             可以访问浏览器控制台.
+            20180726 success again.
 
     5>.搭建:注册中心集群双点,成功.
         可以在浏览器控制台中看到对方available.
         对应笔记:springcloud(二)：注册中心Eureka
         第二节点工程:springBoot-peer2
+        20180726 success again.
 
     6>.搭建:注册中心,服务提供者,服务注册者,成功.
         可以通过服务提供者和服务注册者分别访问到服务提供者所提供的服务.
         对应笔记:springcloud(三)：服务提供与调用
-        注册中心: 本工程.
+        =======================
+        注册中心: 本工程.(注册中心并非服务的提供者!)
         服务提供者: springBoot-node3-serviceProvider工程. 配置文件已备份到/doc/nodeBackUp中.
         服务消费者: springBoot-node4-serviceConsumer工程. 注意新的概念: "feign"接口!
+        =======================
         测试url:localhost:8084/testCallRemoteService.do?name=jsflzhong
 
     7>.搭建:注册中心对服务提供者多个点的负载均衡, 成功.
@@ -277,7 +281,7 @@
 
 5.待解决BUG:
 
-    1>.通过Application.java方式启动的项目,很快,但无法通过controller访问jsp页面.
+    1>.通过Application.java方式启动的项目,很快,但无法通过controller访问 jsp 页面.
         --已解决: 20180330
         由于IDEA的BUG,需要注掉tomcat-embed-jasper依赖的provided作用域.
         且,这种启动方式比下面maven的好处多很多,例如,LOG完善,断点支持.
