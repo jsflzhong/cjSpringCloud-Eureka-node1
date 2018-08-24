@@ -272,6 +272,9 @@
         测试url: http://localhost:8085/testCallRemoteService.do?name=jsflzhong
         在服务提供者启动并注册后,访问上述消费者的url来请求数据; 然后关闭该服务提供者,再次访问上述url,此时hystrix熔断器发挥回调作用.可看到自定义的熔断器返回的错误信息.
 
+    9>.手动上下线服务的功能.
+        可以通过 ApplicationInfoManager 这个bean来管理服务在eureka上的状态.一共有五种状态:
+
 
 
 
